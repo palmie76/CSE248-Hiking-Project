@@ -167,8 +167,8 @@ public class SystemController {
 	
 	void profileMapMethods(UserProfileTreeMap um, UserProfile target){
 		LinkedList<UserProfile> key = um.searchUserProfile(target);
-		LinkedList<UserProfile> keyPassword = um.searchByPassword(target);
-		UserProfile keyUsername = um.searchByUsername(target);
+		LinkedList<UserProfile> keyPassword = um.searchByPassword(target.getPassword());
+		UserProfile keyUsername = um.searchByUsername(target.getUsername());
 		um.deleteProfile(target);
 		um.addProfile(target);
 		
@@ -185,7 +185,7 @@ public class SystemController {
 	}
 	
 	void trailMapMethods(TrailTreeMap tm, Trail trailTarget) {
-		LinkedList<Trail> keyID = tm.searchByID(trailTarget.getTrailID());
+		Trail keyID = tm.searchByID(trailTarget.getTrailID());
 		LinkedList<Trail> keyName = tm.searchByName(trailTarget.getTrailName());
 		LinkedList<Trail> keyHead = tm.searchByHeadAddress(trailTarget.getHeadAddress());
 		LinkedList<Trail> keyLength = tm.searchByLength(trailTarget.getLength());

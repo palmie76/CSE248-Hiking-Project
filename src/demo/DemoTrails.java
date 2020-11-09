@@ -15,22 +15,14 @@ public class DemoTrails {
 		Utilities ut = new Utilities();
 		LinkedList<Trail> trailList = new LinkedList<Trail>();
 		
-		TrailTreeSet ts = ut.emitTrailsTreeSet(0);
-		TrailTreeMap tm = ut.emitTrailsTreeMap(0);
+		TrailTreeSet ts = ut.emitTrailsTreeSet(10);
+		TrailTreeMap tm = ut.emitTrailsTreeMap(10);
 		
-		Trail trail = new Trail("B", "B", 1, 2, "C", "D");
-		ts.addTrail(trail);
 		LinkedList<Trail> key = ts.searchByName("A");
 		//System.out.println(key.toString());
 		
-		Trail t1 = new Trail("Q", "B", 1, 2, "B", "B");
-		Trail t2 = new Trail("K", "B", 1, 2, "B", "B");
-		Trail t3 = new Trail("R", "B", 1, 2, "B", "B");
-		Trail t4 = new Trail("E", "B", 1, 2, "B", "B");
-		
-		trailList.add(t4);
-		trailList.add(t3);
-		trailList.add(t2);
+		Trail t1 = new Trail("Q", "B", 1, 2, ut.emitRandomDifficulty(), ut.emitRandomType());
+
 		trailList.add(t1);
 		
 	//	ts.addAllTrails(trailList);
@@ -42,7 +34,6 @@ public class DemoTrails {
 		LinkedList<Trail> target1 = tm.searchByName("B");
 		System.out.println(target1.toString());
 		
-		tm.addTrail(trail);
 		LinkedList<Trail> target2 = tm.searchByID(3);
 		System.out.println(target2.toString());
 		

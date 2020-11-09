@@ -4,6 +4,8 @@ import java.util.LinkedList;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 
+import trail_model.TrailEnums.Difficulty;
+
 public class TrailTreeSet {
 	TreeSet<Trail> trailSet;
 //	LinkedList<Trail> helper;
@@ -111,7 +113,7 @@ public class TrailTreeSet {
 		
 	}
 	
-	public LinkedList<Trail> searchByDifficulty(String difficulty){
+	public LinkedList<Trail> searchByDifficulty(Difficulty difficulty){
 		return trailSet.stream().filter(p -> p.getDifficulty().equals(difficulty)).collect(Collectors.toCollection(LinkedList::new));
 		
 	//	return trailSet.stream().filter(p -> p.getDifficulty().equals(difficulty)).findFirst().get();

@@ -36,7 +36,7 @@ public class TrailGraphDemo {
 		
 	
 		
-		//System.out.println(s1.getConnections().toString());
+		System.out.println(dijkstra);
 		
 	
 

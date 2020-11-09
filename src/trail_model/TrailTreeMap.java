@@ -7,19 +7,26 @@ import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 import profile_model.UserProfile;
+import trail_model.TrailEnums.Difficulty;
+import trail_model.TrailEnums.Type;
 
 public class TrailTreeMap {
+	/**
+	 * 
+	 * Stores Trails in a TreeMap by <ID, Trail>
+	 * 
+	 */
 	TreeMap<Integer, Trail> trailMap;
-	//LinkedList<Trail> helper;
+
 
 	public TrailTreeMap() {
 		trailMap = new TreeMap<Integer, Trail>();
-		//helper = new LinkedList<>();
+
 	}
 
 	public void addTrail(Trail trail) {
 		trailMap.put(trail.getTrailID(), trail);
-		//helper.add(trail);
+
 	}
 	
 	public void addAllTrails(Collection<Trail> trailCollection) {
@@ -30,7 +37,7 @@ public class TrailTreeMap {
 
 	public void removeTrail(Trail trail) {
 		trailMap.remove(trail.getTrailID());
-		//helper.remove(trail);
+
 	}
 	
 	
@@ -39,16 +46,14 @@ public class TrailTreeMap {
 	public String toString() {
 		return "TrailTreeMap: " + trailMap.values().toString() + "\n";
 	}
-
-	public LinkedList<Trail> searchByID(int ID){
-		return trailMap.values().stream().filter(p -> p.getTrailID() == ID).collect(Collectors.toCollection(LinkedList::new));
-		
-		//return trailMap.values().stream().filter(p -> p.getTrailID() == ID).findFirst().get();
-		
-//		if(trailMap.containsKey(ID)) {
-//			return trailMap.get(ID);
-//		}
-//		return null;
+	/**
+	 * search for a specific Trail object by Trail ID 
+	 * @param ID of Trail to be searched for
+	 * @return Trail which satisfies search.  As TreeMap is sorted by TrailID and TreeMap cannot contain duplicates, should only return one Trail object if found
+	 */
+	public Trail searchByID(int ID){
+		return trailMap.values().stream().filter(p -> p.getTrailID() == ID).findAny().get();
+	
 		
 	}
 	
@@ -68,14 +73,6 @@ public class TrailTreeMap {
 	public LinkedList<Trail> searchByHeadAddress(String address){
 		return trailMap.values().stream().filter(p -> p.getHeadAddress().equals(address)).collect(Collectors.toCollection(LinkedList::new));
 		
-		//return trailMap.values().stream().filter(p -> p.getHeadAddress().equals(address)).findFirst().get();
-		
-//		for(Map.Entry<Integer, Trail> set: trailMap.entrySet()) {
-//			if(set.getValue().getHeadAddress().equals(address)) {
-//				return set.getValue();
-//			}
-//		}
-//		return null;
 	}
 	
 	public LinkedList<Trail> searchByLength(int length){
@@ -104,7 +101,7 @@ public class TrailTreeMap {
 //		return null;
 	}
 	
-	public LinkedList<Trail> searchByDifficulty(String difficulty){
+	public LinkedList<Trail> searchByDifficulty(Difficulty difficulty){
 		return trailMap.values().stream().filter(p -> p.getDifficulty().equals(difficulty)).collect(Collectors.toCollection(LinkedList::new));
 		
 		//return trailMap.values().stream().filter(p -> p.getDifficulty().equals(difficulty)).findFirst().get();
@@ -117,7 +114,7 @@ public class TrailTreeMap {
 //		return null;
 	}
 	
-	public LinkedList<Trail> searchByType(String type){
+	public LinkedList<Trail> searchByType(Type type){
 		return trailMap.values().stream().filter(p -> p.getType().equals(type)).collect(Collectors.toCollection(LinkedList::new));
 
 		

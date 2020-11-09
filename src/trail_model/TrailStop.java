@@ -9,6 +9,13 @@ public class TrailStop implements Comparable<TrailStop>{
 	private int trailID;
 	private static int TRAIL_ID = 0;
 	
+	/**
+	 * TrailStop consists of two LinkedLists: 
+	 * 	connections contains all connecting TrailPaths to this TrailStop
+	 * 	neighborsList contains all TrailStops which neighbor this TrailStop 
+	 * 
+	 * @param altitude the altitude of the TrailStop
+	 */
 	
 	public TrailStop(int altitude) {
 		this.altitude = altitude;

@@ -11,6 +11,9 @@ import profile_model.UserProfile;
 import profile_model.UserProfileTreeMap;
 import profile_model.UserProfileTreeSet;
 import trail_model.Trail;
+import trail_model.TrailEnums;
+import trail_model.TrailEnums.Difficulty;
+import trail_model.TrailEnums.Type;
 import trail_model.TrailTreeMap;
 import trail_model.TrailTreeSet;
 
@@ -73,16 +76,26 @@ public class Utilities {
 	//create random classes
 	public HikingHistory createHikingHistory(){
 		return new HikingHistory(emitRandomString(), emitRandomInt(), emitRandomInt(), emitRandomString(), emitRandomDouble(), LocalDateTime.now());
-		
+	
+
+	}
+	
+	public HikingHistoryStore createHikingHistoryStore(){
+		HikingHistoryStore hhs = new HikingHistoryStore();
+		HikingHistory hh = new HikingHistory(emitRandomString(), emitRandomInt(), emitRandomInt(), emitRandomString(), emitRandomDouble(), LocalDateTime.now());
+		hhs.addHike(hh);
+		return hhs;
 	}
 	
 	public UserProfile createUserProfile(){
-		return new UserProfile(Double.toString(emitRandomDouble()), emitRandomString(), emitRandomString(), createHikingHistory());
+		UserProfile up = new UserProfile(Double.toString(emitRandomDouble()), emitRandomString(), emitRandomString());
+		up.setHikingHistory(createHikingHistoryStore());
+		return up;
 			
 	}
 	
 	public Trail createTrail(){
-		return new Trail(emitRandomString(), emitRandomString(), emitRandomInt(), emitRandomInt(), emitRandomString(), emitRandomString());
+		return new Trail(emitRandomString(), emitRandomString(), emitRandomInt(), emitRandomInt(), emitRandomDifficulty(), emitRandomType());
 		
 		
 	}
@@ -100,6 +113,18 @@ public class Utilities {
 	public double emitRandomDouble() {
 		return Math.random() * 100;
 	
+	}
+	
+	public Type emitRandomType() {
+		Random random = new Random();
+		int x = random.nextInt(TrailEnums.Type.values().length);
+        return TrailEnums.Type.values()[x];
+	}
+	
+	public Difficulty emitRandomDifficulty() {
+		Random random = new Random();
+		int x = random.nextInt(TrailEnums.Difficulty.values().length);
+        return TrailEnums.Difficulty.values()[x];
 	}
 
 }

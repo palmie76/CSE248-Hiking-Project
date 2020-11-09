@@ -1,17 +1,20 @@
 package trail_model;
 
+import trail_model.TrailEnums.Difficulty;
+import trail_model.TrailEnums.Type;
+
 public class Trail implements Comparable<Trail>{
-	String trailName;
-	String headAddress;
-	int length;
-	int elevationGain;
-	String difficulty;
-	String type;
-	TrailGraph trailGraph;
-	int trailID;
+	private String trailName;
+	private String headAddress;
+	private int length;
+	private int elevationGain;
+	private Difficulty difficulty;
+	private Type type;
+	private TrailGraph trailGraph;
+	private int trailID;
 	private static int TRAIL_ID = 0;
 	
-	public Trail(String trailName, String headAddress, int length, int elevationGain, String difficulty, String type/*, TrailGraph trailGraph*/){
+	public Trail(String trailName, String headAddress, int length, int elevationGain, TrailEnums.Difficulty difficulty, TrailEnums.Type type/*, TrailGraph trailGraph*/){
 		this.trailName = trailName;
 		this.headAddress = headAddress;
 		this.length = length;
@@ -64,19 +67,19 @@ public class Trail implements Comparable<Trail>{
 		this.elevationGain = elevationGain;
 	}
 
-	public String getDifficulty() {
+	public Difficulty getDifficulty() {
 		return difficulty;
 	}
 
-	public void setDifficulty(String difficulty) {
+	public void setDifficulty(Difficulty difficulty) {
 		this.difficulty = difficulty;
 	}
 
-	public String getType() {
+	public Type getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(Type type) {
 		this.type = type;
 	}
 

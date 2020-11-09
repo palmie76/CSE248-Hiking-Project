@@ -1,18 +1,18 @@
 package profile_model;
 
 import history_model.HikingHistory;
+import history_model.HikingHistoryStore;
 
-public class UserProfile implements Comparable<UserProfile>{
-	String username;
-	String password;
-	String profilePicture;
-	HikingHistory hikingHistory;
+public class UserProfile extends User implements Comparable<UserProfile>{
+//	private String username;
+//	private String password;
+	private String profilePicture;
+	private HikingHistoryStore hikingHistoryStore;
 	
-	public UserProfile(String username, String password, String profilePicture, HikingHistory hikingHistory){
-		this.username = username;
-		this.password = password;
+	public UserProfile(String username, String password, String profilePicture){
+		super(username, password);
 		this.profilePicture = profilePicture;
-		this.hikingHistory = hikingHistory;
+		hikingHistoryStore = new HikingHistoryStore();
 		
 	}
 
@@ -40,12 +40,12 @@ public class UserProfile implements Comparable<UserProfile>{
 		this.profilePicture = profilePicture;
 	}
 
-	public HikingHistory getHikingHistory() {
-		return hikingHistory;
+	public HikingHistoryStore getHikingHistory() {
+		return hikingHistoryStore;
 	}
 
-	public void setHikingHistory(HikingHistory hikingHistory) {
-		this.hikingHistory = hikingHistory;
+	public void setHikingHistory(HikingHistoryStore hikingHistoryStore) {
+		this.hikingHistoryStore = hikingHistoryStore;
 	}
 
 	@Override
@@ -57,7 +57,7 @@ public class UserProfile implements Comparable<UserProfile>{
 	@Override
 	public String toString() {
 		return "UserProfile username=" + username + ", password=" + password + ", profilePicture=" + profilePicture
-				+ ", hikingHistory=" + hikingHistory + "\n";
+				+ ", hikingHistory=" + hikingHistoryStore + "\n";
 	}
 	
 	
