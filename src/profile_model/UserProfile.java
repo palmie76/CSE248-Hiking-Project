@@ -9,12 +9,20 @@ public class UserProfile extends User implements Comparable<UserProfile>{
 	private String profilePicture;
 	private HikingHistoryStore hikingHistoryStore;
 	
+	/**
+	 * creates UserProfile object which will have restricted access of GUI portion of program
+	 * creates new, empty HikingHistoryStore which can be filled by by the user in GUI portion
+	 * @param username
+	 * @param password
+	 * @param profilePicture
+	 */
 	public UserProfile(String username, String password, String profilePicture){
 		super(username, password);
 		this.profilePicture = profilePicture;
 		hikingHistoryStore = new HikingHistoryStore();
 		
 	}
+
 
 	public String getUsername() {
 		return username;
@@ -56,8 +64,13 @@ public class UserProfile extends User implements Comparable<UserProfile>{
 
 	@Override
 	public String toString() {
-		return "UserProfile username=" + username + ", password=" + password + ", profilePicture=" + profilePicture
-				+ ", hikingHistory=" + hikingHistoryStore + "\n";
+		return "Username: " + username + ", Photos: " + profilePicture + "\n";
+	}
+
+
+	public void addHistory(HikingHistory history) {
+		hikingHistoryStore.addHike(history);
+		
 	}
 	
 	

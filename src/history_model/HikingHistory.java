@@ -74,4 +74,12 @@ public class HikingHistory implements Comparable<HikingHistory> {
 
 	}
 
+	@Override
+	public String toString() {
+		return "Trail Name: " + trailName + ", Distance: " + distance + ", Duration: " + duration
+				+ ", Pictures Taken: " + picturesTaken + ", Average Pace: " + averagePace + ", Date and Time: " + dateAndTime + "\n";
+				
+	}
+	
+
 }

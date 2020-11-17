@@ -87,4 +87,14 @@ public class MethodsTest {
 		assertTrue(tm.getUserProfiles().containsValue(u1));
 		
 	}
+	
+	@Test
+	public void testSearchUser() {
+		Utilities ut = new Utilities();
+		UserProfileTreeMap tm = ut.emitUserProfilesTreeMap(10);
+		UserProfile u1 = new UserProfile("LizzyP","bananas123", ut.emitRandomString());
+		tm.addProfile(u1);
+		assertSame(tm.searchByUsername("LizzyP"), u1);
+		
+	}
 }

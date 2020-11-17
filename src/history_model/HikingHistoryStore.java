@@ -2,8 +2,12 @@ package history_model;
 import java.util.LinkedList;
 
 public class HikingHistoryStore {
-	LinkedList<HikingHistory> hikingList;
+	private LinkedList<HikingHistory> hikingList;
 	
+	/**
+	 * 
+	 * constructs a HikingHistoryStore which contains HikingHistory objects in a LinkedList
+	 */
 	public HikingHistoryStore(){
 		hikingList = new LinkedList<HikingHistory>();
 	}
@@ -14,6 +18,10 @@ public class HikingHistoryStore {
 	
 	public void deleteHike(HikingHistory hike) {
 		hikingList.remove(hike);
+	}
+	
+	public LinkedList<HikingHistory> getHikingList(){
+		return this.hikingList;
 	}
 
 }

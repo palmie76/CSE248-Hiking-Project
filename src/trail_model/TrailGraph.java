@@ -22,7 +22,9 @@ public class TrailGraph {
 	private LinkedList<TrailPath> toVisit = new LinkedList<TrailPath>();
 	private LinkedList<TrailStop> visited = new LinkedList<TrailStop>();
 
-
+/**
+ *  TrailGraph constructor which creates a LinkedList of TrailStops
+ */
 	public TrailGraph() {
 		trailStops = new TreeSet<TrailStop>();
 
@@ -34,9 +36,13 @@ public class TrailGraph {
 	 */
 	public void addStop(TrailStop stop) {
 		trailStops.add(stop);
-		// adjacencyList.add(stop.getNeighbors());
 
 	}
+	
+	/** 
+	 * adds TrailPath and its connections to TrailGraph
+	 * @param edge
+	 */
 	
 	public void addEdge(TrailPath edge) {
 		TrailStop stop1 = edge.getStop1();
@@ -113,44 +119,6 @@ public class TrailGraph {
 
 	}
 
-//			for (TrailPath p : s.getConnections()) {
-//				// int targetDist = Integer.MAX_VALUE;
-//				if (p.getDistance() < compare) {
-//					compare = p.getDistance();
-//
-//					if (!visited.contains(p.getStop1())) {
-//						target = p.getStop1();
-//					} else if(!visited.contains(p.getStop2())){
-//						target = p.getStop2();
-//					}
-//					else {
-//						break;
-//					}
-//				}
-//				distance += compare;
-//				pq.add(target);
-//
-//			}
-
-
-//	public int searchDistance(TrailStop beginning, TrailStop target) {
-//		for(TrailPath c: beginning.getConnections()) {	
-//			if(c.getEnd().equals(target)) {
-//				return distance += c.getDistance();
-//		
-//			}
-//			
-//			else {
-//				distance+= c.getDistance();
-//				return searchDistance(c.getEnd(), target);
-//			}
-//		}
-//		
-//		targetList.add(distance);
-//		return distance;
-//		
-//	}
-
 	public LinkedList<Integer> searchGraph(TrailStop stop1, TrailStop stop2, int cost) {
 		visited.add(stop1);
 
@@ -160,7 +128,6 @@ public class TrailGraph {
 		ListIterator<TrailPath> iterVisit = toVisit.listIterator();
 
 		while (toVisit.size() != 0) {
-			// for (TrailPath s : toVisit) {
 			TrailPath p = iterVisit.next();
 			iterVisit.remove();
 
@@ -175,7 +142,7 @@ public class TrailGraph {
 					cost += (p.getDistance());
 					visited.add(p.getStop1());
 					return searchGraph(p.getStop1(), stop2, cost);
-					// toVisit.addAll(p.getStop1().getConnections());
+		
 				}
 			}
 
@@ -201,61 +168,6 @@ public class TrailGraph {
 
 	}
 
-//	public LinkedList<Integer> searchGraph(TrailStop stop1, TrailStop stop2) {
-//		LinkedList<TrailStop> visited = new LinkedList<TrailStop>();
-//		LinkedList<Integer> distances = new LinkedList<Integer>();
-//		
-//		LinkedList<Integer> distancesToTarget = new LinkedList<Integer>();
-//		
-//		visited.add(stop1);
-//
-//		LinkedList<TrailPath> toVisit = new LinkedList<TrailPath>();
-//
-//		for (TrailPath s : stop1.getConnections()) {
-//			toVisit.add(s);
-//		}
-//
-//		ListIterator<TrailPath> iterVisit = toVisit.listIterator();
-//	
-//		int d1 = 0;
-//		int d2 = 0;
-//		
-//		while (toVisit.size() != 0) {
-//			// for (TrailPath s : toVisit) {
-//			TrailPath p = iterVisit.next();
-//			iterVisit.remove();
-//			
-//			if (!visited.contains(p.getStop1())) {
-//				if (p.getStop1().equals(stop2)) {
-//					d1 += (p.getDistance());
-//					distancesToTarget.add(d1);
-//					
-//				} else {
-//					d1 += (p.getDistance());
-//					toVisit.addAll(p.getStop1().getConnections());
-//				}
-//			}
-//
-//			if (!visited.contains(p.getStop2())) {
-//				if (p.getStop2().equals(stop2)) {
-//					d2 += (p.getDistance());
-//					distancesToTarget.add(d2);
-//			
-//				}
-//				d2 += (p.getDistance());
-//				toVisit.addAll(p.getStop2().getConnections());
-//			}
-//			
-//			
-//			visited.add(p.getStop1());
-//			visited.add(p.getStop2());
-//		
-//			iterVisit = toVisit.listIterator();
-//		}
-//
-//		return distancesToTarget;
-//
-//	}
 
 	@Override
 	public String toString() {
@@ -269,5 +181,12 @@ public class TrailGraph {
 
 		return sb.toString();
 	}
+	public TreeSet<TrailStop> getTrailStops() {
+		return trailStops;
+	}
+	public void setTrailStops(TreeSet<TrailStop> trailStops) {
+		this.trailStops = trailStops;
+	}
+	
 
 }

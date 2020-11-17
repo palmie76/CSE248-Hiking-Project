@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="246.0" prefWidth="314.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFX.EditUserController">
+   <top>
+      <HBox prefHeight="33.0" prefWidth="482.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Fill out the following information: " />
+         </children>
+      </HBox>
+   </top>
+   <bottom>
+      <HBox prefHeight="56.0" prefWidth="299.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnEdit" mnemonicParsing="false" onAction="#updateInformation" text="Save changes" />
+            <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#deleteUser" text="Delete User" />
+            <Button fx:id="btnBack" mnemonicParsing="false" onAction="#goBack" text="Back" />
+         </children>
+      </HBox>
+   </bottom>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="49.0" prefWidth="600.0">
+               <children>
+                  <Label text="Username: " />
+                  <TextField fx:id="tfUsername" />
+               </children>
+            </HBox>
+            <HBox prefHeight="43.0" prefWidth="600.0">
+               <children>
+                  <Label text="Password: " />
+                  <TextField fx:id="tfPassword" />
+               </children>
+            </HBox>
+            <HBox prefHeight="49.0" prefWidth="600.0">
+               <children>
+                  <Label text="Photo: " />
+                  <TextField fx:id="tfPhoto" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</BorderPane>

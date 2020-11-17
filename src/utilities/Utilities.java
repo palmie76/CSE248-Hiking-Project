@@ -1,21 +1,17 @@
 package utilities;
-import java.time.LocalDate;
+
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.util.LinkedList;
 import java.util.Random;
 
 import history_model.HikingHistory;
 import history_model.HikingHistoryStore;
 import profile_model.UserProfile;
 import profile_model.UserProfileTreeMap;
-import profile_model.UserProfileTreeSet;
 import trail_model.Trail;
 import trail_model.TrailEnums;
 import trail_model.TrailEnums.Difficulty;
 import trail_model.TrailEnums.Type;
 import trail_model.TrailTreeMap;
-import trail_model.TrailTreeSet;
 
 public class Utilities {
 	private String canditateChars;
@@ -35,16 +31,7 @@ public class Utilities {
 		return userProfileTreeMap;
 		
 	}
-	
-	public UserProfileTreeSet emitUserProfilesTreeSet(int num){
-		UserProfileTreeSet userProfileTreeSet = new UserProfileTreeSet();
-		for(int i = 0; i < num; i++){
-			userProfileTreeSet.addProfile(createUserProfile());
-			
-		}
-		return userProfileTreeSet;
-		
-	}
+
 	
 	public HikingHistoryStore emitHikingHistories(int num){
 		HikingHistoryStore hikingHistoryBag = new HikingHistoryStore();
@@ -64,14 +51,6 @@ public class Utilities {
 		return trailTreeMap;
 	}
 	
-	public TrailTreeSet emitTrailsTreeSet(int num){
-		TrailTreeSet trailTreeSet = new TrailTreeSet();
-		for(int i = 0; i < num; i++){
-			trailTreeSet.addTrail(createTrail());
-			
-		}
-		return trailTreeSet;
-	}
 	
 	//create random classes
 	public HikingHistory createHikingHistory(){

@@ -10,8 +10,6 @@ public class TrailPath implements Comparable<TrailPath>{
 		this.stop2 = stop2;
 		this.distance = distance;
 		
-
-		
 	}
 
 	public TrailStop getStop1() {

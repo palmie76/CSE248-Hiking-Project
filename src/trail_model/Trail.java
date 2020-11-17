@@ -14,14 +14,24 @@ public class Trail implements Comparable<Trail>{
 	private int trailID;
 	private static int TRAIL_ID = 0;
 	
-	public Trail(String trailName, String headAddress, int length, int elevationGain, TrailEnums.Difficulty difficulty, TrailEnums.Type type/*, TrailGraph trailGraph*/){
+	/**
+	 * 
+	 * constructs new Trail object representing the given parameters and assigns a unique ID
+	 * @param trailName 
+	 * @param headAddress 
+	 * @param length
+	 * @param elevationGain
+	 * @param difficulty
+	 * @param type
+	 */
+	public Trail(String trailName, String headAddress, int length, int elevationGain, TrailEnums.Difficulty difficulty, TrailEnums.Type type){
 		this.trailName = trailName;
 		this.headAddress = headAddress;
 		this.length = length;
 		this.elevationGain = elevationGain;
 		this.difficulty = difficulty;
 		this.type = type;
-		//this.trailGraph = trailGraph;
+		trailGraph = new TrailGraph();
 		
 		trailID = getNextTrailID();
 		
@@ -101,12 +111,12 @@ public class Trail implements Comparable<Trail>{
 		}
 		else
 			return 0;
-//		return(this.trailName.compareTo(trail.getTrailName());
+
 	}
 
 	@Override
 	public String toString() {
-		return "Trail trailName=" + trailName + ", trailID=" + trailID + "\n";
+		return "Trail Name: " + trailName + ", ID: " + trailID + "\n";
 	}
 	
 	

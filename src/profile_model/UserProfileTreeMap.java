@@ -11,13 +11,22 @@ public class UserProfileTreeMap {
 	 * Stores UserProfile in a TreeMap by <Username, UserProfile>
 	 * 
 	 */
-	TreeMap<String, UserProfile> userProfiles;
+	TreeMap<String, User> userProfiles;
 	
 	public UserProfileTreeMap(){
-		userProfiles = new TreeMap<String, UserProfile>();
+		userProfiles = new TreeMap<String, User>();
 		
 	}
-	public void addProfile(UserProfile user){
+	/**
+	 * returns true if TreeMap contains the specified user 
+	 * @param user
+	 * @return
+	 */
+	public boolean contains(User user) {
+		return userProfiles.containsValue(user);
+		
+	}
+	public void addProfile(User user){
 		userProfiles.put(user.getUsername(), user);
 	}
 	/**
@@ -25,8 +34,8 @@ public class UserProfileTreeMap {
 	 * 
 	 * @param profileCollection collection to be added to TreeMap
 	 */
-	public void addAllProfiles(Collection<UserProfile> profileCollection) {
-		for(UserProfile p : profileCollection) {
+	public void addAllProfiles(Collection<User> profileCollection) {
+		for(User p : profileCollection) {
 			userProfiles.put(p.getUsername(), p);
 		}
 	}
@@ -36,29 +45,48 @@ public class UserProfileTreeMap {
 	 * @param user UserProfile to be searched for
 	 * @return LinkedList of all UserProfile objects which satisfy search
 	 */
-	public LinkedList<UserProfile> searchUserProfile(UserProfile user) {
+	public Collection<User> searchUserProfile(UserProfile user) {
 		return userProfiles.values().stream().filter(p -> p.equals(user)).collect(Collectors.toCollection(LinkedList::new));
 		
 		
 	}
 	
-	public UserProfile searchByUsername(String username) {
-		return userProfiles.values().stream().filter(p -> p.getUsername() == username).findFirst().get();
+	/**
+	 * 
+	 * search TreeMap for a UserProfile object by username
+	 * @param username
+	 * @return
+	 */
+	public User searchByUsername(String username) {
+		return userProfiles.values().stream().filter(p -> p.getUsername().equals(username)).findFirst().get();
 		
 	}
-	
-	public LinkedList<UserProfile> searchByPassword(String password){
+	/**
+	 * search TreeMap for a UserProfile object by password
+	 * @param password
+	 * @return
+	 */
+	public Collection<User> searchByPassword(String password){
 		return userProfiles.values().stream().filter(p -> p.getPassword() == password).collect(Collectors.toCollection(LinkedList::new));
 		
 	}
 	/**
-	 * Removes specified UserProfile object to be removed from the TreeMap
+	 * removes specified UserProfile object to be removed from the TreeMap
 	 * 
 	 * @param user UserProfile to be removed
 	 * @return UserProfile which was removed from TreeMap
 	 */
-	public UserProfile deleteProfile(UserProfile user){
+	public User deleteProfile(User user){
 		return userProfiles.remove(user.getUsername());
+	}
+	/**
+	 * removes UserProfile by username
+	 * @param username
+	 */
+	public void deleteByUsername(String username) {
+		if(userProfiles.containsKey(username)) {
+			userProfiles.remove(username);
+		}
 	}
 
 	@Override
@@ -66,11 +94,11 @@ public class UserProfileTreeMap {
 		return userProfiles.entrySet().toString();
 	}
 
-	public TreeMap<String, UserProfile> getUserProfiles() {
+	public TreeMap<String, User> getUserProfiles() {
 		return userProfiles;
 	}
 
-	public void setUserProfiles(TreeMap<String, UserProfile> userProfiles) {
+	public void setUserProfiles(TreeMap<String, User> userProfiles) {
 		this.userProfiles = userProfiles;
 	}
 	

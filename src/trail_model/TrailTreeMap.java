@@ -18,23 +18,40 @@ public class TrailTreeMap {
 	 */
 	TreeMap<Integer, Trail> trailMap;
 
-
+/** 
+ * constructor which creates new, empty TreeMap
+ */
 	public TrailTreeMap() {
 		trailMap = new TreeMap<Integer, Trail>();
 
 	}
-
+	
+	
+/**
+ * 
+ * adds Trail to TreeMap by ID, Trail
+ * @param trail Trail object to be added
+ */
 	public void addTrail(Trail trail) {
 		trailMap.put(trail.getTrailID(), trail);
 
 	}
 	
+	/** 
+	 * 
+	 * adds a collection of Trail objects to the TreeMap
+	 * @param trailCollection collections of Trail objects to be added
+	 */
 	public void addAllTrails(Collection<Trail> trailCollection) {
 		for(Trail t : trailCollection) {
 			trailMap.put(t.getTrailID(), t);
 		}
 	}
-
+	/**
+	 * 
+	 * removes Trail from TreeMap
+	 * @param trail
+	 */
 	public void removeTrail(Trail trail) {
 		trailMap.remove(trail.getTrailID());
 
@@ -46,6 +63,7 @@ public class TrailTreeMap {
 	public String toString() {
 		return "TrailTreeMap: " + trailMap.values().toString() + "\n";
 	}
+	
 	/**
 	 * search for a specific Trail object by Trail ID 
 	 * @param ID of Trail to be searched for
@@ -59,15 +77,7 @@ public class TrailTreeMap {
 	
 	public LinkedList<Trail> searchByName(String name){
 		return trailMap.values().stream().filter(p -> p.getTrailName().equals(name)).collect(Collectors.toCollection(LinkedList::new));
-		
-		//return trailMap.values().stream().filter(p -> p.getTrailName().equals(name)).findFirst().get();
-		
-//		for(Map.Entry<Integer, Trail> set: trailMap.entrySet()) {
-//			if(set.getValue().getTrailName().equals(name)) {
-//				return set.getValue();
-//			}
-//		}
-//		return null;
+
 	}
 	
 	public LinkedList<Trail> searchByHeadAddress(String address){
@@ -78,54 +88,19 @@ public class TrailTreeMap {
 	public LinkedList<Trail> searchByLength(int length){
 		return trailMap.values().stream().filter(p -> p.getLength() == length).collect(Collectors.toCollection(LinkedList::new));
 		
-		//return trailMap.values().stream().filter(p -> p.getLength() == length).findFirst().get();
-		
-//		for(Map.Entry<Integer, Trail> set: trailMap.entrySet()) {
-//			if(set.getValue().getLength() == length) {
-//				return set.getValue();
-//			}
-//		}
-//		return null;
 	}
 	
 	public LinkedList<Trail> searchByElevationGain(int elevationGain){
 		return trailMap.values().stream().filter(p -> p.getElevationGain() == elevationGain).collect(Collectors.toCollection(LinkedList::new));
-		
-		//return trailMap.values().stream().filter(p -> p.getElevationGain() == elevationGain).findFirst().get();
-		
-//		for(Map.Entry<Integer, Trail> set: trailMap.entrySet()) {
-//			if(set.getValue().getElevationGain() == elevationGain) {
-//				return set.getValue();
-//			}
-//		}
-//		return null;
+	
 	}
 	
 	public LinkedList<Trail> searchByDifficulty(Difficulty difficulty){
 		return trailMap.values().stream().filter(p -> p.getDifficulty().equals(difficulty)).collect(Collectors.toCollection(LinkedList::new));
-		
-		//return trailMap.values().stream().filter(p -> p.getDifficulty().equals(difficulty)).findFirst().get();
-		
-//		for(Map.Entry<Integer, Trail> set: trailMap.entrySet()) {
-//			if(set.getValue().getDifficulty().equals(difficulty)) {
-//				return set.getValue();
-//			}
-//		}
-//		return null;
 	}
 	
 	public LinkedList<Trail> searchByType(Type type){
 		return trailMap.values().stream().filter(p -> p.getType().equals(type)).collect(Collectors.toCollection(LinkedList::new));
-
-		
-		//return trailMap.values().stream().filter(p -> p.getType().equals(type)).findFirst().get();
-		
-//		for(Map.Entry<Integer, Trail> set: trailMap.entrySet()) {
-//			if(set.getValue().getType().equals(type)) {
-//				return set.getValue();
-//			}
-//		}
-//		return null;
 		
 	}
 
